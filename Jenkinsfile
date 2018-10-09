@@ -1,9 +1,20 @@
 pipeline {
     agent any
-    stages {
-        stage('Stage 1') {
+
+	options {
+		skipDefaultCheckout true
+	}
+
+	stages {
+        stage('checkout') {
             steps {
-                echo 'Hello world!'
+                checkout scm
+            }
+        }
+
+        stage('build') {
+            steps {
+                sh dotnet build
             }
         }
     }
