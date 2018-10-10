@@ -7,8 +7,10 @@ pipeline {
 
 	stages {
         stage('test') {
-			echo "Hello world"
-        }
+			steps {
+				echo "Hello world"
+			}
+		}
 
         stage('checkout') {
             steps {
