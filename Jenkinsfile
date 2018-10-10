@@ -26,7 +26,7 @@ pipeline {
 
         stage('deploy') {
 			steps {
-				sh "dotnet publish -o artifact src/HelloWorldJenkins"
+				sh "dotnet publish -o /var/artifact src/HelloWorldJenkins"
 			}
         }
     }
