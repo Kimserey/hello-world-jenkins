@@ -14,13 +14,13 @@ pipeline {
 
         stage('build') {
 			steps {
-				sh "cd src && dotnet build"
+				sh "cd src/HelloWorldJenkins && dotnet build"
 			}
         }
 
         stage('test') {
 			steps {
-				sh "cd test && dotnet test"
+				sh "cd src/HelloWorldJenkins.UnitTests && dotnet test"
 			}
         }
     }
