@@ -26,7 +26,8 @@ pipeline {
 
         stage('deploy') {
 			steps {
-				sh "tar -zcvf ./HelloWorldJenkins.tar.gz ."
+				sh "touch HelloWorldJenkins.tar.gz"
+				sh "tar --exclude=HelloWorldJenkins.tar.gz -zcvf HelloWorldJenkins.tar.gz ."
 				//sh "curl -XPOST --unix-socket /var/run/docker.sock -F 'data=@./HelloWorldJenkins.tar.gz' -H 'Content-Type: application/x-tar' http://localhost/build"
 				sh "dotnet publish -o /var/artifact src/HelloWorldJenkins"
 			}
