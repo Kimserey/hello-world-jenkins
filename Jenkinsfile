@@ -15,7 +15,10 @@ pipeline {
         stage('build') {
 			steps {
 				withCredentials([string(credentialsId: 'mysecret', variable: 'SECRET')]) {
-				  sh "echo $SECRET"
+					sh """
+						set +x
+						echo $SECRET
+					"""
 				}
 
 				sh "dotnet build src/HelloWorldJenkins"
