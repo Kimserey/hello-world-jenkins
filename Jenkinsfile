@@ -13,21 +13,27 @@ pipeline {
         }
 
         stage('build') {
-            steps {
-                sh "dotnet build"
-            }
+			dir('src') {
+				steps {
+					sh "dotnet build"
+				}
+			}
         }
 
         stage('test') {
-            steps {
-                sh "dotnet test"
-            }
+			dir('test') {
+				steps {
+					sh "dotnet test"
+				}
+			}
         }
 
         stage('publish') {
-            steps {
-                sh "dotnet publish"
-            }
+			dir('src') {
+				steps {
+					sh "dotnet publish"
+				}
+			}
         }
     }
 }
