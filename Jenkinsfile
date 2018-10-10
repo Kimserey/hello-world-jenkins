@@ -26,10 +26,10 @@ pipeline {
 
         stage('deploy') {
 			steps {
-				sh "touch artifact.tar.gz"
+				sh "touch artifact.tar"
 				sh "dotnet clean"
-				sh "tar --exclude=artifact.tar.gz -zcvf artifact.tar.gz ."
-				sh "curl -v -X POST -H \"Content-Type:application/tar\" --data-binary '@artifact.tar.gz' http:/v1.37/build?t=build_test"
+				sh "tar --exclude=artifact.tar -cvf artifact.tar ."
+				sh "curl --unix-socket /var/run/docker.sock -X POST -H \"Content-Type:application/tar\" --data-binary '@artifact.tar' http:/v1.37/build?dockerfile=\"./src/HelloWorldJenkins/Dockerfile\"&t=build_test"
 				sh "dotnet publish -o /var/artifact src/HelloWorldJenkins"
 			}
         }
