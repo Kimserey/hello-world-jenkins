@@ -22,6 +22,9 @@ pipeline {
         }
 
         stage('build') {
+            environment {
+                AN_ACCESS_KEY = credentials('abcd')
+            }
 			steps {
 				withCredentials([string(credentialsId: 'mysecret', variable: 'SECRET')]) {
 					sh """
@@ -29,6 +32,8 @@ pipeline {
 						echo $SECRET
 					"""
 				}
+
+				sh "echo $AN_ACCESS_KEY"
 
 				sh "dotnet build src/HelloWorldJenkins"
 			}
