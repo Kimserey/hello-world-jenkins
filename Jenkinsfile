@@ -29,11 +29,22 @@ pipeline {
 				sh "touch artifact.tar"
 				sh "dotnet clean"
 				sh "tar --exclude=artifact.tar -cvf artifact.tar ."
-				sh "curl --unix-socket /var/run/docker.sock -X POST -H \"Content-Type:application/tar\" --data-binary '@artifact.tar' http:/v1.37/build?dockerfile=\"./src/HelloWorldJenkins/Dockerfile\"&t=build_test"
-				sh "dotnet publish -o /var/artifact src/HelloWorldJenkins"
+
+				sh """
+					curl --unix-socket /var/run/docker.sock \
+						-X POST -H "Content-Type:application/x-tar" \
+						--data-binary '@artifact.tar' \
+						http:/v1.38/build?t=hello-world-jenkins
+				"""
+
+				sh """
+					curl --unix-socket /var/run/docker.sock -H \"Content-Type: application/json\" \
+						-d '{\"Image": \"hello-world-jenkins\", \"NetworkSettings\": {\"Ports\": { \"80/tcp\": [{\"HostIp\": \"0.0.0.0\", \"HostPort\": \"5000\" }]}}' \
+						-X POST http:/v1.24/containers/create
+				"""
+
+
 			}
         }
     }
 }
-
-// curl --unix-socket /var/run/docker.sock -X POST -H "Content-Type:application/x-tar" --data-binary '@artifact.tar' http:/v1.38/build?dockerfile="./src/HelloWorldJenkins/Dockerfile"&t=helloyoyo
