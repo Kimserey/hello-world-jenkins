@@ -15,8 +15,9 @@ pipeline {
                 checkout scm
 				checkout([
 					$class: 'GitSCM',
-					branches: [[name: params.CommitId ],
-					userRemoteConfigs: [[url: 'https://github.com/Kimserey/hello-world-jenkins.git' ]]])
+					branches: [[name: params.CommitId ]],
+					userRemoteConfigs: [[url: 'https://github.com/Kimserey/hello-world-jenkins.git' ]]
+				])
             }
         }
 
