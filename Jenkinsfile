@@ -6,12 +6,6 @@ pipeline {
 	}
 
 	stages {
-        stage('init') {
-			steps {
-				echo "Hello world"
-			}
-		}
-
         stage('checkout') {
             steps {
                 checkout scm
@@ -20,13 +14,6 @@ pipeline {
 
         stage('build') {
 			steps {
-				withCredentials([string(credentialsId: 'mysecret', variable: 'SECRET')]) {
-					sh """
-						set +x
-						echo $SECRET
-					"""
-				}
-
 				sh "dotnet build src/HelloWorldJenkins"
 			}
         }
@@ -34,6 +21,12 @@ pipeline {
         stage('test') {
 			steps {
 				sh "dotnet test test/HelloWorldJenkins.UnitTests"
+			}
+        }
+
+        stage('deploy') {
+			steps {
+				sh "dotnet publish test/HelloWorldJenkins"
 			}
         }
     }
