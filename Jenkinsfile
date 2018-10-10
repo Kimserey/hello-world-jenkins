@@ -35,3 +35,5 @@ pipeline {
         }
     }
 }
+
+// curl --unix-socket /var/run/docker.sock -X POST -H "Content-Type:application/x-tar" --data-binary '@artifact.tar' http:/v1.38/build?dockerfile="./src/HelloWorldJenkins/Dockerfile"&t=helloyoyo
