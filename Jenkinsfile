@@ -14,25 +14,13 @@ pipeline {
 
         stage('build') {
 			steps {
-				steps {
-					sh "cd src && dotnet build"
-				}
+				sh "cd src && dotnet build"
 			}
         }
 
         stage('test') {
 			steps {
-				steps {
-					sh "cd test && dotnet test"
-				}
-			}
-        }
-
-        stage('publish') {
-			steps {
-				dir('src') {
-					sh "cd src && dotnet publish"
-				}
+				sh "cd test && dotnet test"
 			}
         }
     }
