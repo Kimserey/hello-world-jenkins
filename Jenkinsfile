@@ -31,7 +31,7 @@ pipeline {
 
 					touch artifact.tar
 
-					tar --exclude=artifact.tar -cvf artifact.tar .
+					tar --exclude=artifact.tar --exclude=.git* --exclude=./test* --exclude=.vs* -cvf artifact.tar .
 
 					curl --unix-socket /var/run/docker.sock \
 						-X POST -H "Content-Type:application/x-tar" \
