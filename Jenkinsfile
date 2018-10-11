@@ -53,7 +53,7 @@ pipeline {
 
         stage('deploy new container') {
 			steps {
-				def json = readFile "create-container.json"
+				json = readFile "create-container.json"
 
 				sh """
 					curl --unix-socket /var/run/docker.sock \
