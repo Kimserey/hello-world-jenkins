@@ -2,14 +2,14 @@
 
 namespace HelloWorldJenkins
 {
-    [Route("/test")]
+    [Route("/")]
     [ApiController]
-    public class TestController : ControllerBase
+    public class HomeController : ControllerBase
     {
         [HttpGet]
         public ActionResult<string> Get()
         {
-            return "Hello world from test controller";
+            return "Hello world";
         }
     }
 }
