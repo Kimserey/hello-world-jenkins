@@ -53,12 +53,10 @@ pipeline {
 
         stage('deploy new container') {
 			steps {
-				def json = readFile "create-container.json"
-
 				sh """
 					curl --unix-socket /var/run/docker.sock \
 						-H "Content-Type: application/json" \
-						-d json \
+						-d @create-container.json \
 						-X POST \
 						http:/v1.38/containers/create?name=hello-world-jenkins
 				"""
