@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # Triggers Jenkins pipeline named TestPipeline after every commits.
+# - Authentication must be setup on Jenkins to perform actions
 # - TestPipeline needs to be setup with Configure>Build Triggers>Triggers remotely>Token=mytoken
 # Needs to be added under .git/hooks as post-commit.
 ####
 
-curl http://localhost:8080/job/TestPipeline/build?token=mytoken
+curl -u kimserey:12345 http://localhost:8080/job/TestPipeline/build?token=mytoken
