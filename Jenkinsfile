@@ -22,9 +22,9 @@ pipeline {
 			steps {
 				sh "./run.sh > /dev/null"
 				
-				script {
-					MY_SECRET = 'hello'
-				}
+				// script {
+				// 	MY_SECRET = 'hello'
+				// }
 
 				sh """
 					set +x
