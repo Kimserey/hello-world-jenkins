@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "$(< .secrets/MY_SECRET)"
+echo "TEST $(< .secrets/MY_SECRET)"
