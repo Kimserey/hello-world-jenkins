@@ -18,7 +18,10 @@ pipeline {
 
         stage('build') {
 			steps {
-				sh "dotnet build src/HelloWorldJenkins"
+				sh """
+					set +x
+					dotnet build src/HelloWorldJenkins
+				"""
 				
 				sh """
 					set +x
