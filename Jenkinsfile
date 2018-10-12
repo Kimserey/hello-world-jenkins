@@ -12,15 +12,12 @@ pipeline {
 
 	stages {
         stage('checkout') {
-            steps {
-                checkout scm
-
-				parallel(
-					"This is my step name" : {
-						sh 'env'
-					}
-				)
-            }
+			parallel(
+				"This is my step name" : {
+					checkout scm
+					sh 'env'
+				}
+			)
         }
 
         stage('build') {
