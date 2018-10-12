@@ -14,6 +14,12 @@ pipeline {
         stage('checkout') {
             steps {
                 checkout scm
+
+				sh '''
+					set +x
+					s -al
+					set -x
+				'''
             }
         }
 
@@ -30,19 +36,19 @@ pipeline {
 					echo ${MY_SECRET} > .secrets/MY_SECRET
 					./run.sh
 				"""
-				
+
 				// script {
 				// 	MY_SECRET = 'hello'
 				// }
 
 				sh """
 					set +x
-					
+
 					echo ${MY_SECRET}
 
 					curl -X GET \
 						http://google.com
-						
+
 					dotnet build src/HelloWorldJenkins
 				"""
 			}
@@ -53,15 +59,15 @@ pipeline {
 		// 		sh "dotnet test test/HelloWorldJenkins.UnitTests"
 		// 	}
         // }
-		
+
 		// stage('build docker image') {
 		// 	steps {
 		// 		sh "dotnet clean"
-		
+
 		// 		sh "touch artifact.tar"
-		
+
 		// 		sh "tar --exclude=artifact.tar --exclude=.git* --exclude=./test* --exclude=.vs* -cvf artifact.tar ."
-		
+
 		// 		// It shows in Jenkins step log regardless of set +x set
 		// 		sh	"""
 		// 			set +x
@@ -73,7 +79,7 @@ pipeline {
 		// 		"""
 		// 	}
 		// }
-		
+
 		// stage('teardown old container') {
 		// 	steps {
 		// 		sh """
@@ -83,7 +89,7 @@ pipeline {
 		// 		"""
 		// 	}
 		// }
-		
+
         // stage('deploy new container') {
 		// 	steps {
 		// 		sh """
@@ -93,7 +99,7 @@ pipeline {
 		// 				-X POST \
 		// 				http:/v1.38/containers/create?name=hello-world-jenkins
 		// 		"""
-		
+
 		// 		sh "curl --unix-socket /var/run/docker.sock -X POST http:/v1.24/containers/hello-world-jenkins/start"
 		// 	}
         // }
