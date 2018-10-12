@@ -6,7 +6,7 @@ pipeline {
 	}
 
     environment {
-        MY_SECRET = 'mysupersecret'
+        MY_SECRET = 'second secret'
     }
 
 	stages {
