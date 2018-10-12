@@ -20,13 +20,9 @@ pipeline {
 			steps {
 				//sh "dotnet build src/HelloWorldJenkins"
 				
-				echo MY_SECRET
-
 				sh """
 					set +x
-					rm -rf .secrets || true
-					mkdir .secrets
-					echo ${MY_SECRET} > .secrets/CONNECTION_STRING
+					echo ${MY_SECRET}
 				"""
 
 				//sh """
