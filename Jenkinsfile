@@ -1,3 +1,5 @@
+def hello = 'hellosecret!'
+
 pipeline {
     agent any
 
@@ -9,7 +11,6 @@ pipeline {
         MY_SECRET = 'second secret'
     }
 
-	def hello = 'hellosecret!'
 
 	stages {
         stage('checkout') {
