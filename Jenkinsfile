@@ -18,15 +18,18 @@ pipeline {
         }
 
         stage('build') {
-			def x = 'hello'
 
 			steps {
 				sh "./run.sh > /dev/null"
 				
+				script {
+					MY_SECRET = 'hello'
+				}
+
 				sh """
 					set +x
 					
-					echo ${x}
+					echo ${MY_SECRET}
 
 					curl -X GET \
 						http://google.com
