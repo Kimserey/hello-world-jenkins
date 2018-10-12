@@ -17,7 +17,7 @@ pipeline {
 
 				sh '''
 					set +x
-					s -al
+					ls
 					set -x
 				'''
             }
