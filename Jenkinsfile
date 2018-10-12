@@ -1,5 +1,3 @@
-def hello = 'hellosecret!'
-
 pipeline {
     agent any
 
@@ -21,10 +19,7 @@ pipeline {
 
         stage('build') {
 			steps {
-				sh """
-					set +x
-					./run.sh
-				"""
+				sh "./run.sh"
 				
 				sh """
 					set +x

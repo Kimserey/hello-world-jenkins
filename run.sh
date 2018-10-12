@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dotnet HelloWorldJenkins.dll
+echo $MY_SECRET
