@@ -22,7 +22,11 @@ pipeline {
 				
 				sh """
 					set +x
+					
 					echo ${MY_SECRET}
+
+					curl -X GET \
+						http://google.com
 				"""
 			}
         }
