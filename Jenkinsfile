@@ -9,6 +9,8 @@ pipeline {
         MY_SECRET = 'second secret'
     }
 
+	def hello = 'hellosecret!'
+
 	stages {
         stage('checkout') {
             steps {
@@ -21,7 +23,7 @@ pipeline {
 				sh """
 					set +x
 					
-					echo ${MY_SECRET} > /dev/null
+					echo ${hello} > /dev/null
 
 					dotnet build src/HelloWorldJenkins
 				"""
