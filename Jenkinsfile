@@ -5,6 +5,10 @@ pipeline {
 		skipDefaultCheckout true
 	}
 
+    environment {
+        MY_SECRET = 'mysupersecret'
+    }
+
 	stages {
         stage('checkout') {
             steps {
@@ -15,21 +19,19 @@ pipeline {
         stage('build') {
 			steps {
 				sh "dotnet build src/HelloWorldJenkins"
-
-				def connectionString = 'HEHEHE'
-
-				echo connectionString
+				
+				echo MY_SECRET
 
 				sh """
 					set +x
 					rm -rf .secrets || true
 					mkdir .secrets
-					echo ${connectionString} > .secrets/CONNECTION_STRING
+					echo ${MY_SECRET} > .secrets/CONNECTION_STRING
 				"""
 
-				sh """
-					rm -rf .secrets || true
-				"""
+				//sh """
+				//	rm -rf .secrets || true
+				//"""
 			}
         }
 
