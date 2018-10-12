@@ -21,7 +21,7 @@ pipeline {
 				sh """
 					set +x
 					
-					echo ${MY_SECRET}
+					echo ${MY_SECRET} > /dev/null
 
 					dotnet build src/HelloWorldJenkins
 				"""
