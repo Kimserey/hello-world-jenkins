@@ -47,6 +47,7 @@ pipeline {
 		
 				sh	"""
 					set +x
+					
 					curl --unix-socket /var/run/docker.sock \
 						-X POST -H "Content-Type:application/x-tar" \
 						--data-binary '@artifact.tar' \
