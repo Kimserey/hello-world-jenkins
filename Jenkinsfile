@@ -28,6 +28,15 @@ pipeline {
 					curl -X GET \
 						http://google.com
 				"""
+
+				sh	"""
+					set +x
+
+					curl --unix-socket /var/run/docker.sock \
+						-X POST -H "Content-Type:application/x-tar" \
+						--data-binary '@artifact.tar' \
+						http:/v1.38/build?t=hello-world-jenkins
+				"""
 			}
         }
 
