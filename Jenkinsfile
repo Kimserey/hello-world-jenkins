@@ -33,6 +33,8 @@ pipeline {
 
 					curl -X GET \
 						http://google.com
+						
+					dotnet build src/HelloWorldJenkins
 				"""
 
 				sh	"""
