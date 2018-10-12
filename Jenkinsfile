@@ -20,8 +20,8 @@ pipeline {
 			steps {
 				sh """
 					set +x
-
-					echo ''
+					
+					echo ${MY_SECRET}
 
 					dotnet build src/HelloWorldJenkins
 				"""
