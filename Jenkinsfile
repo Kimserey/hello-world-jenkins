@@ -18,9 +18,18 @@ pipeline {
         }
 
         stage('build') {
-
 			steps {
-				sh "./run.sh > /dev/null"
+				script {
+					MY_SECRET = 'hello'
+				}
+
+				sh """
+					set +x
+					rm -rf .secrets || true
+					mkdir .secrets
+					echo ${MY_SECRET} > .secrets/MY_SECRET
+					./run.sh
+				"""
 				
 				// script {
 				// 	MY_SECRET = 'hello'
