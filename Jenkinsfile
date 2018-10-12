@@ -15,11 +15,10 @@ pipeline {
             steps {
                 checkout scm
 
-				sh '''
-					set +x
-					ls
-					set -x
-				'''
+				wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: "${MY_SECRET}", var: 'PASSWORD']]]) {
+					println MY_SECRET
+					sh 'echo "Hello World ${MY_SECRET}"'
+				}
             }
         }
 
