@@ -18,7 +18,7 @@ pipeline {
 
         stage('build') {
 			steps {
-				sh "dotnet build src/HelloWorldJenkins"
+				//sh "dotnet build src/HelloWorldJenkins"
 				
 				echo MY_SECRET
 
