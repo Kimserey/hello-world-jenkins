@@ -16,7 +16,7 @@ pipeline {
 			steps {
 				sh "dotnet build src/HelloWorldJenkins"
 
-				connectionString = "HEHEHE"
+				def connectionString = 'HEHEHE'
 
 				echo connectionString
 
