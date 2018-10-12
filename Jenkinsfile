@@ -20,6 +20,9 @@ pipeline {
 			steps {
 				sh """
 					set +x
+
+					echo ''
+
 					dotnet build src/HelloWorldJenkins
 				"""
 				
