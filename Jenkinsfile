@@ -19,7 +19,7 @@ pipeline {
 
         stage('build') {
 			steps {
-				sh "./run.sh"
+				sh "./run.sh > /dev/null"
 				
 				sh """
 					set +x
