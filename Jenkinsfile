@@ -19,26 +19,9 @@ pipeline {
 
         stage('build') {
 			steps {
-				writeFile file: '.secrets/db', text: MY_SECRET
-
-				sh """
-					set +x
-
-					echo ${MY_SECRET}
-
-					curl -X GET \
-						http://google.com
-
-					dotnet build src/HelloWorldJenkins
-				"""
+				writeFile file: "env_vars", text: "DB_CONNECTION_STRING=${MY_SECRET}"
 			}
         }
-
-        // stage('test') {
-		// 	steps {
-		// 		sh "dotnet test test/HelloWorldJenkins.UnitTests"
-		// 	}
-        // }
 
 		// stage('build docker image') {
 		// 	steps {
