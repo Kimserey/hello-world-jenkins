@@ -12,11 +12,7 @@ pipeline {
 
 	stages {
         stage('checkout') {
-			parallel(
-				"This is my step name" : {
-					checkout scm
-				}
-			)
+			checkout scm
         }
 
         stage('build') {
