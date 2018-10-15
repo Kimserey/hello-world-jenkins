@@ -15,7 +15,6 @@ pipeline {
 			parallel(
 				"This is my step name" : {
 					checkout scm
-					sh 'env'
 				}
 			)
         }
@@ -26,6 +25,9 @@ pipeline {
 					MY_SECRET = 'hello'
 				}
 
+				//https://jenkins.io/doc/pipeline/steps/workflow-basic-steps/#writefile-write-file-to-workspace
+				writeFile file: 'groovy1.txt', text: 'Working with files the Groovy way is easy.'
+
 				sh """
 					set +x
 					rm -rf .secrets || true
@@ -33,10 +35,6 @@ pipeline {
 					echo ${MY_SECRET} > .secrets/MY_SECRET
 					./run.sh
 				"""
-
-				// script {
-				// 	MY_SECRET = 'hello'
-				// }
 
 				sh """
 					set +x
