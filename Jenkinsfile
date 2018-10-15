@@ -13,6 +13,8 @@ pipeline {
 	stages {
         stage('checkout') {
 			steps {
+				def x = new test()
+				test.migration()
 				checkout scm
 			}
 		}
