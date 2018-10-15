@@ -20,6 +20,7 @@ pipeline {
         stage('build') {
 			steps {
 				writeFile file: "env_vars", text: "DB_CONNECTION_STRING=${MY_SECRET}"
+
 			}
         }
 
