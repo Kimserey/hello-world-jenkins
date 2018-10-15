@@ -19,20 +19,7 @@ pipeline {
 
         stage('build') {
 			steps {
-				script {
-					MY_SECRET = 'hello'
-				}
-
-				//https://jenkins.io/doc/pipeline/steps/workflow-basic-steps/#writefile-write-file-to-workspace
-				writeFile file: 'groovy1.txt', text: 'Working with files the Groovy way is easy.'
-
-				sh """
-					set +x
-					rm -rf .secrets || true
-					mkdir .secrets
-					echo ${MY_SECRET} > .secrets/MY_SECRET
-					./run.sh
-				"""
+				writeFile file: '.secrets/db', text: MY_SECRET
 
 				sh """
 					set +x
