@@ -1,6 +1,10 @@
 @Library('my-shared-library') _
 
-def variable = "Hello"
+properties([
+  parameters([
+    string(name: 'MESSAGE', defaultValue: 'HEY HEY', description: 'Some message')
+   ])
+])
 
 stage ("Shared Library Test") {
   
@@ -14,6 +18,6 @@ stage ("Shared Library Test") {
 
   log {
     type = "info"
-    message = variable
+    message = params.MESSAGE
   }
 }
