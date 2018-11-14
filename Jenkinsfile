@@ -16,10 +16,10 @@ stage ("Shared Library Test") {
     message = "test warning closure!"
   }
 
-  def message = params.MESSAGE
+  _message = params.MESSAGE
 
   log {
     type = "info"
-    message = message
+    message = _message
   }
 }
