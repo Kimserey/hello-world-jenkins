@@ -20,6 +20,8 @@ stage ("Shared Library Test") {
   println test
 
   log {
+    println test
+    println params.MESSAGE
     type = "info"
     message = test
   }
