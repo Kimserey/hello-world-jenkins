@@ -4,9 +4,11 @@ properties([
    ])
 ])
 
-node ("master") {
 
+def test = "test"
+
+node ("master") {
     stage ("QA") {
-        deleteDir()
+		print(test);
     }
 }
