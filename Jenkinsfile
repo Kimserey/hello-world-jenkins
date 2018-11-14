@@ -13,7 +13,7 @@ stage ("Shared Library Test") {
   
   def x = ["a", "b", "c"]
   println x
-  def y = x.collect { val -> val + "what?" }
+  def y = x.collect { val -> val + "what?" }.join(', ')
   println y
 
   log {
