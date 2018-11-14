@@ -1,8 +1,12 @@
 @Library('my-shared-library') _
 
-stage ("QA") {
+stage ("Shared Library Test") {
+  
+  log.info "test info!"
+  
   log {
     type = "warning"
-    message = "test!"
+    message = "test warning closure!"
   }
+
 }
