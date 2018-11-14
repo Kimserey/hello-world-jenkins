@@ -12,7 +12,8 @@ stage ("Shared Library Test") {
   log.info "test info!"
   
   def x = ["a", "b", "c"]
-  def y = x.each { it.val = it.val + "what?" }
+  println x
+  def y = x.each { it = it + "what?" }
   println y
 
   log {
