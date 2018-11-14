@@ -21,6 +21,6 @@ stage ("Shared Library Test") {
 
   log {
     type = "info"
-    message = params.MESSAGE
+    message = test
   }
 }
