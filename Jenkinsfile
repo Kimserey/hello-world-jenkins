@@ -19,8 +19,8 @@ stage ("Shared Library Test") {
   def message = params.MESSAGE
 
   log {
-    println message 
-    
+    println ('message: ' + message) 
+
     type = "info"
     message = message
   }
