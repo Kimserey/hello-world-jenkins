@@ -4,7 +4,7 @@ properties([
    ])
 ])
 
-node ("qa") {
+node ("master") {
 
     stage ("QA") {
         deleteDir()
