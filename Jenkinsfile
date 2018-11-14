@@ -1,16 +1,8 @@
-properties([
-  parameters([
-    string(name: 'VERSION', defaultValue: '0.0.0', description: 'version')
-   ])
-])
-
-@Library('my-shared-library') _
+@Library('utils') _
 
 def test = "test"
 
-node ("master") {
-    stage ("QA") {
-		  println test
-      log.info "test!"
-    }
+stage ("QA") {
+  println test
+  log.info "test!"
 }
