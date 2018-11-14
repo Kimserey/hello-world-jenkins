@@ -9,22 +9,13 @@ pipeline {
         MY_SECRET = 'second secret'
     }
 
+	def x = "hello"
 
 	stages {
         stage('checkout') {
-			steps {
-				def x = new test()
-				test.migration()
-				checkout scm
-			}
+			print(x)
 		}
 
-        stage('build') {
-			steps {
-				writeFile file: "env_vars", text: "DB_CONNECTION_STRING=${MY_SECRET}"
-
-			}
-        }
 
 		// stage('build docker image') {
 		// 	steps {
