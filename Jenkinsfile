@@ -6,6 +6,8 @@ properties([
    ])
 ])
 
+def test = params.MESSAGE
+
 stage ("Shared Library Test") {
   
   log.info "test info!"
@@ -15,6 +17,7 @@ stage ("Shared Library Test") {
     message = "test warning closure!"
   }
 
+  println test
 
   log {
     type = "info"
