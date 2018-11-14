@@ -1,4 +1,4 @@
-@Library('utils') _
+@Library('my-shared-library') _
 
 def test = "test"
 
