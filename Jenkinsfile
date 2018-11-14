@@ -4,11 +4,13 @@ properties([
    ])
 ])
 
+@Library('my-shared-library') _
 
 def test = "test"
 
 node ("master") {
     stage ("QA") {
-		print(test);
+		  println test
+      log.info "test!"
     }
 }
