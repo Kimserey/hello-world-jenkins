@@ -16,10 +16,10 @@ stage ("Shared Library Test") {
     message = "test warning closure!"
   }
 
-  _message = params.MESSAGE
+  msg = params.MESSAGE
 
   log {
     type = "info"
-    message = _message
+    message = msg
   }
 }
